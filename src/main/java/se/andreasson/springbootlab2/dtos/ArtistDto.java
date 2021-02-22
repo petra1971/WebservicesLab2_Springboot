@@ -1,4 +1,4 @@
-package se.andreasson.springbootlab2;
+package se.andreasson.springbootlab2.dtos;
 
 public class ArtistDto {
 

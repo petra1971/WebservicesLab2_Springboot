@@ -1,4 +1,4 @@
-package se.andreasson.springbootlab2;
+package se.andreasson.springbootlab2.entities;
 
 import javax.persistence.*;
 
