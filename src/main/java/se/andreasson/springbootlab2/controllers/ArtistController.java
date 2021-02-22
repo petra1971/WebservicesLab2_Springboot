@@ -48,9 +48,16 @@ public class ArtistController {
     }
     
     @PutMapping("artists/{id}")
-    public ArtistDto replace(@RequestBody ArtistDto artistDto, @PathVariable Long id) {
+    public ArtistDto replace(@PathVariable Long id,
+                             @RequestBody ArtistDto artistDto) {
         return artistService.replace(id, artistDto);
     }
 
+    @PatchMapping("/artists/{id}")
+    public ArtistDto update(@PathVariable Long id,
+                            @RequestBody ArtistDto artistDto) {
+
+        return artistService.update(id, artistDto);
+    }
 }
 

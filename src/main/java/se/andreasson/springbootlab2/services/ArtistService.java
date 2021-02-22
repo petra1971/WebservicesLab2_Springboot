@@ -47,6 +47,9 @@ public class ArtistService {
     }
 
     public ArtistDto replace(Long id, ArtistDto artistDto) {
+        if(artistDto.getName().isEmpty())
+            throw new RuntimeException("Name cannot be empty");
+
         Optional<Artist> artist = artistRepository.findById(id);
         if(artist.isPresent()) {
             Artist updatedArtist = artist.get();
@@ -57,4 +60,25 @@ public class ArtistService {
         else
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id " + id + " not found.");
     }
+    public ArtistDto update(Long id, ArtistDto artistDto) {
+        Optional<Artist> artist = artistRepository.findById(id);
+        if(artist.isPresent()) {
+            Artist updatedArtist = artist.get();
+            if(artistDto.getName() != null) {
+                updatedArtist.setName(artistDto.getName());
+            }
+            return artistMapper.map(artistRepository.save(updatedArtist));
+        }
+        else
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id " + id + " not found.");
+
+
+
+
+
+
+
+
+    }
+
 }
