@@ -1,6 +1,8 @@
 package se.andreasson.springbootlab2.services;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import se.andreasson.springbootlab2.dtos.ArtistDto;
 import se.andreasson.springbootlab2.entities.Artist;
 import se.andreasson.springbootlab2.mappers.ArtistMapper;
@@ -34,5 +36,25 @@ public class ArtistService {
             throw new RuntimeException();
 
         return artistMapper.map(artistRepository.save(artistMapper.map(artist)));
+    }
+
+    public void delete(Long id) {
+        if(artistRepository.existsById(id))
+            artistRepository.deleteById(id);
+        else
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                    "Id " + id + " not found.");
+    }
+
+    public ArtistDto replace(Long id, ArtistDto artistDto) {
+        Optional<Artist> artist = artistRepository.findById(id);
+        if(artist.isPresent()) {
+            Artist updatedArtist = artist.get();
+            updatedArtist.setName(artistDto.getName());
+//            artistRepository.save(updatedArtist);
+            return artistMapper.map(artistRepository.save(updatedArtist));
+        }
+        else
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id " + id + " not found.");
     }
 }

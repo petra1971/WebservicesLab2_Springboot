@@ -40,4 +40,17 @@ public class ArtistController {
     public ArtistDto create(@RequestBody ArtistDto artist) {
         return (artistService.createArtist(artist));
     }
+
+    @DeleteMapping("/artists/{id}")
+//    @ResponseStatus(HttpStatus.FOUND)
+    public void delete(@PathVariable Long id) {
+        artistService.delete(id);
+    }
+    
+    @PutMapping("artists/{id}")
+    public ArtistDto replace(@RequestBody ArtistDto artistDto, @PathVariable Long id) {
+        return artistService.replace(id, artistDto);
+    }
+
 }
+
