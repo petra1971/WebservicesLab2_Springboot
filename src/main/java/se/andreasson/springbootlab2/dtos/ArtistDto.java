@@ -2,20 +2,20 @@ package se.andreasson.springbootlab2.dtos;
 
 public class ArtistDto {
 
-    private long artistId;
+    private long id;
     private String name;
 
-    public ArtistDto(long artistId, String name) {
-        this.artistId = artistId;
+    public ArtistDto(long id, String name) {
+        this.id = id;
         this.name = name;
     }
 
     public long getArtistId() {
-        return artistId;
+        return id;
     }
 
-    public void setArtistId(long artistId) {
-        this.artistId = artistId;
+    public void setArtistId(long id) {
+        this.id = id;
     }
 
     public String getName() {

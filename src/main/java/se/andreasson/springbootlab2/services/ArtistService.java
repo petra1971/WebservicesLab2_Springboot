@@ -7,12 +7,11 @@ import se.andreasson.springbootlab2.dtos.ArtistDto;
 import se.andreasson.springbootlab2.entities.Artist;
 import se.andreasson.springbootlab2.mappers.ArtistMapper;
 import se.andreasson.springbootlab2.repositories.ArtistRepository;
-
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ArtistService {
+public class ArtistService implements se.andreasson.springbootlab2.services.Service {
 
     private final ArtistMapper artistMapper;
     private ArtistRepository artistRepository;
@@ -22,15 +21,18 @@ public class ArtistService {
         this.artistMapper = artistMapper;
     }
 
+    @Override
     public List<ArtistDto> getAllArtists() {
         return artistMapper.map(artistRepository.findAll());
     }
 
-    public Optional<ArtistDto> getOne(Long artistId) {
-        return artistMapper.map(artistRepository.findById(artistId));
+    @Override
+    public Optional<ArtistDto> getOne(Long id) {
+        return artistMapper.map(artistRepository.findById(id));
     }
 
     //Map from ArtistDto to Artist
+    @Override
     public ArtistDto createArtist(ArtistDto artist) {
         if(artist.getName().isEmpty())
             throw new RuntimeException();
@@ -38,6 +40,7 @@ public class ArtistService {
         return artistMapper.map(artistRepository.save(artistMapper.map(artist)));
     }
 
+    @Override
     public void delete(Long id) {
         if(artistRepository.existsById(id))
             artistRepository.deleteById(id);
@@ -46,6 +49,7 @@ public class ArtistService {
                     "Id " + id + " not found.");
     }
 
+    @Override
     public ArtistDto replace(Long id, ArtistDto artistDto) {
         if(artistDto.getName().isEmpty())
             throw new RuntimeException("Name cannot be empty");
@@ -60,6 +64,7 @@ public class ArtistService {
         else
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id " + id + " not found.");
     }
+    @Override
     public ArtistDto update(Long id, ArtistDto artistDto) {
         Optional<Artist> artist = artistRepository.findById(id);
         if(artist.isPresent()) {
