@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import se.andreasson.springbootlab2.configurations.TestConfiguration;
 import se.andreasson.springbootlab2.dtos.ArtistDto;
 import se.andreasson.springbootlab2.services.ArtistService;
 import se.andreasson.springbootlab2.services.Service;
@@ -14,10 +15,17 @@ import java.util.List;
 public class ArtistController {
 
     private final Service service;
+    private TestConfiguration testConfiguration;
 
     @Autowired
-    public ArtistController(Service service) {
+    public ArtistController(TestConfiguration testConfiguration, Service service) {
+        this.testConfiguration = testConfiguration;
         this.service = service;
+    }
+
+    @GetMapping("/message")
+    public String message() {
+        return testConfiguration.getFoo();
     }
 
     @GetMapping("/artists")
