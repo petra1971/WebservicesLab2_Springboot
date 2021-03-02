@@ -1,17 +1,17 @@
-package se.andreasson.springbootlab2.services;
+package se.andreasson.artistsservice.services;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import se.andreasson.springbootlab2.dtos.ArtistDto;
-import se.andreasson.springbootlab2.entities.Artist;
-import se.andreasson.springbootlab2.mappers.ArtistMapper;
-import se.andreasson.springbootlab2.repositories.ArtistRepository;
+import se.andreasson.artistsservice.dtos.ArtistDto;
+import se.andreasson.artistsservice.entities.Artist;
+import se.andreasson.artistsservice.mappers.ArtistMapper;
+import se.andreasson.artistsservice.repositories.ArtistRepository;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ArtistService implements se.andreasson.springbootlab2.services.Service {
+public class ArtistService implements se.andreasson.artistsservice.services.Service {
 
     private final ArtistMapper artistMapper;
     private ArtistRepository artistRepository;

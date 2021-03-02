@@ -1,4 +1,4 @@
-package se.andreasson.springbootlab2.entities;
+package se.andreasson.artistsservice.entities;
 
 import javax.persistence.*;
 

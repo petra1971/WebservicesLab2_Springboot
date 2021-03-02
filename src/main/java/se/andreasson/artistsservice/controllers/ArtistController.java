@@ -1,13 +1,14 @@
-package se.andreasson.springbootlab2.controllers;
+package se.andreasson.artistsservice.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import se.andreasson.springbootlab2.configurations.TestConfiguration;
-import se.andreasson.springbootlab2.dtos.ArtistDto;
-import se.andreasson.springbootlab2.services.ArtistService;
-import se.andreasson.springbootlab2.services.Service;
+import se.andreasson.artistsservice.configurations.TestConfiguration;
+import se.andreasson.artistsservice.dtos.ArtistDto;
+import se.andreasson.artistsservice.services.Service;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class ArtistController {
 
     private final Service service;
     private TestConfiguration testConfiguration;
+    Logger log = LoggerFactory.getLogger(ArtistController.class);
 
     @Autowired
     public ArtistController(TestConfiguration testConfiguration, Service service) {
@@ -35,6 +37,7 @@ public class ArtistController {
 
     @GetMapping("/artists/{id}")
     public ArtistDto one(@PathVariable Long id) {
+        log.info("For your info, a request for artist with specific id has been received: " + id);
         return service.getOne(id)
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Id " + id + " not found."));
 

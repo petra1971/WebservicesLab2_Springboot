@@ -1,10 +1,9 @@
-package se.andreasson.springbootlab2.controllers;
+package se.andreasson.artistsservice.controllers;
 
 import org.junit.jupiter.api.Test;
-import org.assertj.core.api.Assertions.*;
 import org.springframework.web.server.ResponseStatusException;
-import se.andreasson.springbootlab2.configurations.TestConfiguration;
-import se.andreasson.springbootlab2.services.TestService;
+import se.andreasson.artistsservice.configurations.TestConfiguration;
+import se.andreasson.artistsservice.services.TestService;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;

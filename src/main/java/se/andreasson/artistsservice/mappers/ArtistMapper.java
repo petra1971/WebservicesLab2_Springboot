@@ -1,8 +1,8 @@
-package se.andreasson.springbootlab2.mappers;
+package se.andreasson.artistsservice.mappers;
 
 import org.springframework.stereotype.Component;
-import se.andreasson.springbootlab2.dtos.ArtistDto;
-import se.andreasson.springbootlab2.entities.Artist;
+import se.andreasson.artistsservice.dtos.ArtistDto;
+import se.andreasson.artistsservice.entities.Artist;
 
 import java.util.ArrayList;
 import java.util.List;

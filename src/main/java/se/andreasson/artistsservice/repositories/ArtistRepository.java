@@ -1,7 +1,7 @@
-package se.andreasson.springbootlab2.repositories;
+package se.andreasson.artistsservice.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import se.andreasson.springbootlab2.entities.Artist;
+import se.andreasson.artistsservice.entities.Artist;
 
 public interface ArtistRepository extends JpaRepository<Artist, Long> {
 

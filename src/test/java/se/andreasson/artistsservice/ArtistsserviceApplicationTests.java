@@ -1,10 +1,10 @@
-package se.andreasson.springbootlab2;
+package se.andreasson.artistsservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Springbootlab2ApplicationTests {
+class ArtistsserviceApplicationTests {
 
     @Test
     void contextLoads() {

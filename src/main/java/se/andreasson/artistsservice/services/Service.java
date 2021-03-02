@@ -1,6 +1,6 @@
-package se.andreasson.springbootlab2.services;
+package se.andreasson.artistsservice.services;
 
-import se.andreasson.springbootlab2.dtos.ArtistDto;
+import se.andreasson.artistsservice.dtos.ArtistDto;
 
 import java.util.List;
 import java.util.Optional;

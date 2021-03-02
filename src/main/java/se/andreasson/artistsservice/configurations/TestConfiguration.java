@@ -1,7 +1,6 @@
-package se.andreasson.springbootlab2.configurations;
+package se.andreasson.artistsservice.configurations;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
