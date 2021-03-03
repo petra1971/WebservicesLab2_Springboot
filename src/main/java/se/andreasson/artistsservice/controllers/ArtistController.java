@@ -35,6 +35,27 @@ public class ArtistController {
         return service.getAllArtists();
     }
 
+//   Lägg även till möjlighet att söka med GET search=searchterm:
+//    /artists/search?name=kula
+//    När spring ser att det i urlen finns en parameter som heter name så
+//    letar den efter parametrar till metoden som ska hantera anropet och
+//    ser om någon av dom är annoterad med requestParam och heter samma som url parametern name
+//     @GetMapping ("/persons/search") - den delen av urlen gör att metoden körs.
+//    Men ska du komma åt själva urlparameterns värde så skapar du en parameter på metoden
+//    som heter String name. name mappas mot name automatiskt
+
+//    The @PathVariable annotation is used for data passed in the URI (e.g. RESTful web services)
+//    while @RequestParam is used to extract the data found in query parameters.
+
+    @GetMapping("/artists/search")
+    public List<ArtistDto> allByName(@RequestParam String name) {
+    log.info("A request for artists by name has been received: " + name);
+    var result = service.getAllByName(name);
+    if(!result.isEmpty())
+        return result;
+    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Name " + name + " not found.");
+    }
+
     @GetMapping("/artists/{id}")
     public ArtistDto one(@PathVariable Long id) {
         log.info("For your info, a request for artist with specific id has been received: " + id);

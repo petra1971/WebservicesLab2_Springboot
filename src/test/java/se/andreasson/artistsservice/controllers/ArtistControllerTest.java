@@ -18,13 +18,19 @@ class ArtistControllerTest {
         assertThat(artist.getArtistId()).isEqualTo(2);
         assertThat(artist.getName()).isEqualTo("Petra");
     }
-
+    @Test
     void callingOneWithInvalidIdThrowsNotFoundException() {
         ArtistController artistController = new ArtistController(new TestConfiguration(), new TestService());
 
         var artist = artistController.one(1L);
         assertThrows(ResponseStatusException.class, () -> artistController.one(1L));
 
+    }
+    @Test
+    void callingAllReturnListWithArtists() {
+        ArtistController artistController = new ArtistController(new TestConfiguration(), new TestService());
+
+//        var artist = artistController.all()
     }
 
 }

@@ -10,6 +10,8 @@ public interface Service {
 
     Optional<ArtistDto> getOne(Long artistId);
 
+    List<ArtistDto> getAllByName(String name);
+
     //Map from ArtistDto to Artist
     ArtistDto createArtist(ArtistDto artist);
 

@@ -31,6 +31,9 @@ public class ArtistService implements se.andreasson.artistsservice.services.Serv
         return artistMapper.map(artistRepository.findById(id));
     }
 
+    @Override
+    public List<ArtistDto> getAllByName(String name) {return artistMapper.map(artistRepository.findAllByNameContains(name));}
+
     //Map from ArtistDto to Artist
     @Override
     public ArtistDto createArtist(ArtistDto artist) {

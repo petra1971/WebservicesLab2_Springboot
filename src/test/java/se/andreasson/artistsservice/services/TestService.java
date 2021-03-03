@@ -13,6 +13,9 @@ public class TestService implements Service {
     }
 
     @Override
+    public List<ArtistDto> getAllByName(String name) { return null; }
+
+    @Override
     public Optional<ArtistDto> getOne(Long id) {
         if(id == 2) {
             return Optional.of(new ArtistDto(2, "Petra"));
@@ -27,7 +30,6 @@ public class TestService implements Service {
 
     @Override
     public void delete(Long id) {
-
     }
 
     @Override
