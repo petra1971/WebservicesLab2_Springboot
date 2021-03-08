@@ -1,5 +1,6 @@
 package se.andreasson.artistsservice.services;
 
+import org.springframework.http.HttpStatus;
 import se.andreasson.artistsservice.dtos.ArtistDto;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public interface Service {
     //Map from ArtistDto to Artist
     ArtistDto createArtist(ArtistDto artist);
 
-    void delete(Long id);
+    HttpStatus delete(Long id);
 
     ArtistDto replace(Long id, ArtistDto artistDto);
 

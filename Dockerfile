@@ -1,9 +1,10 @@
+#Måste uppdatera service-namnen!!
+
 FROM openjdk:15-alpine
-EXPOSE 5050
-COPY target/springbootlab2-0.0.1-SNAPSHOT.jar  springbootlab2.jar
+COPY target/artistsservice-0.0.1-SNAPSHOT.jar  artistsservice.jar
 #COPY /target/classes /app/
 #ENTRYPOINT [ "java", "." , /app/core:/app/modules", "-m", "se.andreasson.core/se.andreasson.core.SimpleServer"]
-ENTRYPOINT [ "java", "-jar", "springbootlab2.jar"]
+ENTRYPOINT [ "java", "-jar", "/artistsservice.jar"]
 
 FROM openjdk:15-jdk-alpine
 EXPOSE 5050

@@ -89,7 +89,6 @@ public class ArtistController {
     @PatchMapping("/artists/{id}")
     public ArtistDto update(@PathVariable Long id,
                             @RequestBody ArtistDto artistDto) {
-
         return service.update(id, artistDto);
     }
 }

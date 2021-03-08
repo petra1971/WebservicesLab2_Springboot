@@ -3,9 +3,10 @@ version: "3.9"
 services:
   mssql:
     image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: mssqlArtistsDB
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>
+      - MSSQL_SA_PASSWORD=petra
     ports:
       - 1401:1433
     restart: "unless-stopped"
@@ -13,7 +14,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: serverexample
+    image: artistsservice
     container_name: server
     volumes:
       - ./core/target/web:/web

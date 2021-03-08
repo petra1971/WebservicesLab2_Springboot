@@ -15,11 +15,11 @@ public class ArtistMapper {
     }
 
     public ArtistDto map(Artist artist) {
-        return new ArtistDto(artist.getId(), artist.getName());
+        return new ArtistDto(artist.getId(), artist.getName(), artist.getGenre());
     }
 
     public Artist map(ArtistDto artistDto) {
-        return new Artist(artistDto.getArtistId(), artistDto.getName());
+        return new Artist(artistDto.getArtistId(), artistDto.getName(), artistDto.getGenre());
     }
 
     public Optional<ArtistDto> map(Optional<Artist> optionalArtist) {

@@ -4,10 +4,15 @@ public class ArtistDto {
 
     private long id;
     private String name;
+    private String genre;
 
-    public ArtistDto(long id, String name) {
+
+    public ArtistDto() {}
+
+    public ArtistDto(long id, String name, String genre) {
         this.id = id;
         this.name = name;
+        this.genre = genre;
     }
 
     public long getArtistId() {
@@ -25,4 +30,22 @@ public class ArtistDto {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    @Override
+    public String toString() {
+        return "ArtistDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", genre='" + genre + '\'' +
+                '}';
+    }
 }
+

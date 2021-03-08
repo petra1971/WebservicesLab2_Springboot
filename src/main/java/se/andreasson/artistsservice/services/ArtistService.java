@@ -38,24 +38,25 @@ public class ArtistService implements se.andreasson.artistsservice.services.Serv
     @Override
     public ArtistDto createArtist(ArtistDto artist) {
         if(artist.getName().isEmpty())
-            throw new RuntimeException();
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Name is missing");
 
         return artistMapper.map(artistRepository.save(artistMapper.map(artist)));
     }
 
     @Override
-    public void delete(Long id) {
+    public HttpStatus delete(Long id) {
         if(artistRepository.existsById(id))
             artistRepository.deleteById(id);
         else
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                     "Id " + id + " not found.");
+        return null;
     }
 
     @Override
     public ArtistDto replace(Long id, ArtistDto artistDto) {
         if(artistDto.getName().isEmpty())
-            throw new RuntimeException("Name cannot be empty");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 
         Optional<Artist> artist = artistRepository.findById(id);
         if(artist.isPresent()) {
@@ -69,6 +70,9 @@ public class ArtistService implements se.andreasson.artistsservice.services.Serv
     }
     @Override
     public ArtistDto update(Long id, ArtistDto artistDto) {
+        if(artistDto.getName().isEmpty())
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+
         Optional<Artist> artist = artistRepository.findById(id);
         if(artist.isPresent()) {
             Artist updatedArtist = artist.get();
@@ -79,14 +83,5 @@ public class ArtistService implements se.andreasson.artistsservice.services.Serv
         }
         else
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id " + id + " not found.");
-
-
-
-
-
-
-
-
     }
-
 }
